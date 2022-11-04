@@ -14,19 +14,19 @@ class BottomButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           elevation: 8,
-          foregroundColor: Color(0XFF8BC63E),
+          foregroundColor: const Color(0XFF8BC63E),
         ),
+        onPressed: onPressed,
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Text(
             buttonName,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Color(0xFFFFFFFF),
                 fontSize: 14,
                 fontWeight: FontWeight.w500),
           ),
         ),
-        onPressed: onPressed,
       ),
     );
   }
