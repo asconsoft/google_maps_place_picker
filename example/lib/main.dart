@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   static final kInitialPosition = LatLng(-33.8567844, 151.213108);
 
@@ -57,7 +57,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  PickResult selectedPlace;
+  PickResult? selectedPlace;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              RaisedButton(
+              ElevatedButton(
                 child: Text("Load Google Map"),
                 onPressed: () {
                   Navigator.push(
@@ -169,12 +169,12 @@ class _HomePageState extends State<HomePage> {
                                                 buttonName: "Save",
                                                 onPressed: !saveLocation ? () {
                                                   print("do something with [selectedPlace] data");
-                                                  print(selectedPlace.formattedAddress);
+                                                  print(selectedPlace?.formattedAddress);
                                                   print(saveLocationName);
                                                   Navigator.of(context).pop();
                                                 } : saveLocationName.isNotEmpty ? () {
                                                   print("do something with [selectedPlace] data");
-                                                  print(selectedPlace.formattedAddress);
+                                                  print(selectedPlace?.formattedAddress);
                                                   print(saveLocationName);
                                                   Navigator.of(context).pop();
                                                 } : null
@@ -198,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              selectedPlace == null ? Container() : Text(selectedPlace.formattedAddress ?? ""),
+              selectedPlace == null ? Container() : Text(selectedPlace?.formattedAddress ?? ""),
             ],
           ),
         ));
