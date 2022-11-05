@@ -245,7 +245,14 @@ class _PlacePickerState extends State<PlacePicker> {
                   // elevation: 0,
                   // backgroundColor: Colors.transparent,
                   // titleSpacing: 0.0,
-                  leading: widget.leftBarButton != null ? widget.leftBarButton : null,
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    color: Colors.white,
+                    onPressed: () {
+                      searchBarController.clearOverlay();
+                      Navigator.of(context).pop();
+                    },
+                  ),
                   title: Text(widget.title ?? 'Choose custom location', style: TextStyle(color: widget.titleColor ?? Colors.black, fontWeight: FontWeight.w500),),
                   actions: widget.rightBarButtons != null ? widget.rightBarButtons : [],
                   backgroundColor: widget.appBarBackgroundColor != null ? widget.appBarBackgroundColor : Colors.white,
