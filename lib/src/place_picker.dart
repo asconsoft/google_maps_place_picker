@@ -240,19 +240,9 @@ class _PlacePickerState extends State<PlacePicker> {
                 extendBodyBehindAppBar: false,
                 appBar: AppBar(
                   key: appBarKey,
-                  // automaticallyImplyLeading: false,
-                  // iconTheme: Theme.of(context).iconTheme,
-                  // elevation: 0,
-                  // backgroundColor: Colors.transparent,
-                  // titleSpacing: 0.0,
-                  leading: IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    color: Colors.white,
-                    onPressed: () {
-                      searchBarController.clearOverlay();
-                      Navigator.of(context).pop();
-                    },
-                  ),
+                  leading: widget.leftBarButton != null
+                      ? widget.leftBarButton
+                      : null,
                   title: Text(
                     widget.title ?? 'Choose custom location',
                     style: TextStyle(
@@ -280,7 +270,7 @@ class _PlacePickerState extends State<PlacePicker> {
             children.addAll([
               Icon(
                 Icons.error_outline,
-                color: Theme.of(context).errorColor,
+                color: Theme.of(context).colorScheme.error,
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 16),
