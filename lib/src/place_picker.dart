@@ -240,9 +240,14 @@ class _PlacePickerState extends State<PlacePicker> {
                 extendBodyBehindAppBar: false,
                 appBar: AppBar(
                   key: appBarKey,
-                  leading: widget.leftBarButton != null
-                      ? widget.leftBarButton
-                      : null,
+                  leading: GestureDetector(
+                    onTap: () {
+                      searchBarController.reset();
+                    },
+                    child: widget.leftBarButton != null
+                        ? widget.leftBarButton
+                        : null,
+                  ),
                   title: Text(
                     widget.title ?? 'Choose custom location',
                     style: TextStyle(
