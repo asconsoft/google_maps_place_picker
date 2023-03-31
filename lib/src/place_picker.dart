@@ -66,6 +66,7 @@ class PlacePicker extends StatefulWidget {
     this.automaticallyImplyAppBarLeading = true,
     this.autocompleteOnTrailingWhitespace = false,
     this.hidePlaceDetailsWhenDraggingPin = true,
+    this.onLeadingTapped,
   }) : super(key: key);
 
   final String apiKey;
@@ -172,6 +173,7 @@ class PlacePicker extends StatefulWidget {
   final bool hidePlaceDetailsWhenDraggingPin;
 
   final Widget? leftBarButton;
+  final VoidCallback? onLeadingTapped;
   final List<Widget>? rightBarButtons;
 
   final String? title;
@@ -242,9 +244,11 @@ class _PlacePickerState extends State<PlacePicker> {
                   key: appBarKey,
                   leading: GestureDetector(
                     onTap: () {
-                      print("leftBarButton tapped");
-                      print("searchBarController $searchBarController");
+                      searchBarController.clearOverlay();
                       searchBarController.reset();
+                      if (widget.onLeadingTapped != null) {
+                        widget.onLeadingTapped!();
+                      }
                     },
                     child: widget.leftBarButton != null
                         ? widget.leftBarButton
