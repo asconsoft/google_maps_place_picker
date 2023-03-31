@@ -242,6 +242,8 @@ class _PlacePickerState extends State<PlacePicker> {
                   key: appBarKey,
                   leading: GestureDetector(
                     onTap: () {
+                      print("leftBarButton tapped");
+                      print("searchBarController $searchBarController");
                       searchBarController.reset();
                     },
                     child: widget.leftBarButton != null
